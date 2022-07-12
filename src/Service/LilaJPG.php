@@ -21,7 +21,7 @@ class LilaJPG
         $this->client = $client;
     }
 
-    public function getImage(string $fen)
+    public function getImage(string $fen): ?\Psr\Http\Message\StreamInterface
     {
         try {
             $response = $this->client->get('/image.gif', [
@@ -29,10 +29,29 @@ class LilaJPG
                     'fen' => $fen,
                     'output' => 'image.gif',
                 ],
-                'headers' => [
-                    'Accept' => 'application/json',
+                'timeout' => 5000,
+            ]);
+        } catch (ClientException | RequestException $exception) {
+            return null;
+        }
+
+        return $response->getStatusCode() === 200 ?
+            $response->getBody() :
+            null;
+    }
+
+    public function getGameGif(array $game): ?\Psr\Http\Message\StreamInterface
+    {
+        try {
+            $response = $this->client->post('/game.gif', [
+                'body' => json_encode($game, true),
+                'query' => [
+                    'output' => 'game.gif',
                 ],
                 'timeout' => 5000,
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                ],
             ]);
         } catch (ClientException | RequestException $exception) {
             return null;
