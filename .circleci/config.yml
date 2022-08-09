@@ -16,7 +16,18 @@ jobs:
   #     - checkout
   #     - run:
   #         name: "Say hello"
-  #         command: "echo Hello, World!"      
+  #         command: "echo Hello, World!"    
+  build:
+    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+    docker:
+      - image: cimg/base:stable
+    # Add steps to the job
+    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+    steps:
+      - run:
+          # name: "Test"
+          command: "./vendor/bin/phpunit" 
   run-test:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
@@ -35,5 +46,6 @@ jobs:
 workflows:
   say-hello-workflow:
     jobs:
+      - build
       - run-test
       # - say-hello
