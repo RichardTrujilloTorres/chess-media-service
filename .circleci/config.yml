@@ -18,7 +18,7 @@ jobs:
       - image: cimg/php:8.1.9
     steps:
       - checkout
-      - run: less vendor
+      - run: ls
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
