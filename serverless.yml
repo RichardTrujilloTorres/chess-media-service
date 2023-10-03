@@ -14,7 +14,7 @@ provider:
         # Symfony environment variables
         APP_ENV: prod
 #        LILA_GIF_URL: "https://pf60wrhg8d.execute-api.eu-central-1.amazonaws.com:6175"
-        LILA_GIF_URL: ${env:LILA_GIF_URL}:${env:LILA_GIF_PORT}
+        LILA_GIF_URL: ${env:LILA_GIF_URL}
 
 plugins:
     - ./vendor/bref/bref
