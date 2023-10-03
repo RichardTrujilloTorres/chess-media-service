@@ -8,6 +8,8 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "api-platform/core": "^2.6",
+        "bref/bref": "^2.1",
+        "bref/symfony-bridge": "^0.2.2",
         "doctrine/annotations": "^1.13",
         "doctrine/doctrine-bundle": "^2.7",
         "doctrine/doctrine-migrations-bundle": "^3.2",
